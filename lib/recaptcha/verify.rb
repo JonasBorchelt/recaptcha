@@ -89,7 +89,7 @@ module Recaptcha
     def recaptcha_error(model, attribute, message, key, default)
       message ||= Recaptcha.i18n(key, default)
 
-      raise StandardError, message
+      raise StandardError, "#{attribute.to_s}: #{message}"
       if model
         model.errors.add attribute, message
       else
